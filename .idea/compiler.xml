@@ -9,8 +9,8 @@
         <module name="exam" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="exam" target="17" />
+    <bytecodeTargetLevel target="11">
+      <module name="exam" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
