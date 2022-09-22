@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CandidateServiceImpl implements CandidateService {
@@ -35,8 +36,8 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public SuccessDataResult<Boolean> getCandidateById(Long id) {
-        return new SuccessDataResult<>(this.candidateRepository.existsById(id));
+    public SuccessDataResult<Optional<Candidate>> getCandidateById(Long id) {
+        return new SuccessDataResult<>(this.candidateRepository.findById(id));
     }
 
     @Override
@@ -46,7 +47,11 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public Candidate updateCandidateById(Candidate candidate) {
-        return candidateRepository.saveAndFlush(candidate);
+        Optional<Candidate> exist = candidateRepository.findById(candidate.getId());
+        if (!exist.isEmpty()) {
+            return null;
+        }
+        return candidateRepository.save(candidate);
     }
 
     @Override

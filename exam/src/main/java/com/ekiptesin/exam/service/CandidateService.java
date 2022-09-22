@@ -6,6 +6,7 @@ import com.ekiptesin.exam.results.Result;
 import com.ekiptesin.exam.results.SuccessDataResult;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CandidateService {
 
@@ -13,7 +14,7 @@ public interface CandidateService {
 
     DataResult<List<Candidate>> getAll();
 
-    SuccessDataResult<Boolean> getCandidateById(Long id);
+    SuccessDataResult<Optional<Candidate>> getCandidateById(Long id);
 
     void deleteCandidateById(Long id);
 

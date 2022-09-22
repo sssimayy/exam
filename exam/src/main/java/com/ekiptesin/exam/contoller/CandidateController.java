@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/candidate")
@@ -32,7 +33,7 @@ public class CandidateController {
     }
 
     @GetMapping("/getCandidateById")
-    public SuccessDataResult<Boolean> findAllByIsActiveAndCompanyName(Long id) {
+    public SuccessDataResult<Optional<Candidate>> findAllByIsActiveAndCompanyName(Long id) {
         return this.candidateService.getCandidateById(id);
     }
 
