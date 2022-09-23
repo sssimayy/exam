@@ -1,5 +1,6 @@
 package com.ekiptesin.exam.entity;
 
+import com.ekiptesin.exam.StatusEnum;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -34,6 +35,6 @@ public class Candidate {
     @NotBlank(message = "Email can not be empty!")
     private String email;
 
-    @Column(name = "is_open", nullable = false) //Status
-    private boolean isOpen;
+    @Column(name = "status") //Status
+    private StatusEnum status;
 }

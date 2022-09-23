@@ -1,5 +1,6 @@
 package com.ekiptesin.exam.service.impl;
 
+import com.ekiptesin.exam.StatusEnum;
 import com.ekiptesin.exam.entity.Candidate;
 import com.ekiptesin.exam.repository.CandidateRepository;
 import com.ekiptesin.exam.results.*;
@@ -62,13 +63,13 @@ public class CandidateServiceImpl implements CandidateService {
         }
 
         Candidate candidate = this.candidateRepository.getOne(id);
-        candidate.setOpen(false);
+        candidate.setStatus(StatusEnum.OPEN);
 
         return new SuccessDataResult<Candidate>(this.candidateRepository.save(candidate), "Status has been successfully closed.");
     }
 
     private boolean checkNullArea(Candidate candidate) {
-        if (candidate.getName() != null && candidate.getSurname() != null && candidate.getEmail() != null && candidate.isOpen() != false) {
+        if (candidate.getName() != null && candidate.getSurname() != null && candidate.getEmail() != null) {
             return true;
         }
         return false;

@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/candidate")
+@CrossOrigin
 public class CandidateController {
 
     private CandidateService candidateService;
@@ -29,6 +30,7 @@ public class CandidateController {
 
     @GetMapping("/getAll")
     public DataResult<List<Candidate>> getAll() {
+
         return candidateService.getAll();
     }
 
